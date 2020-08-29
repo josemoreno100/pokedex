@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon batalla final</title>
+    <link rel="stylesheet" href="personalice.css">
+</head>
+<body>
+
+    <h1 class="titulo">  Pokemon Batalla Final</h1>
+
+    <button class="button" onclick="luchadores()">LUCHADORES</button>
+
+    <div class="Semifinal-1" id="listaPokemon">
+        <div class="luchadorP" id="pokemon-1">
+                <img src="" alt="">
+                <p></p>
+            
+        </div>
+            <div class="vs">VS</div>
+            <!-- <div>Semifinal 1</div> -->
+        <div class="luchadorP" id="pokemon-2">
+                <img src="" alt="">
+                <p></p>
+            
+        </div>
+    </div>
+
+
+
+
+    <script>
+       
+       let lista = document.getElementById("listaPokemon")
+
+       function luchadorPokemon(id, num) {
+            fetch(`https://pokeapi.co/api/v2/pokemon/${id}`) /* con el id traigo datos dinamicos */
+        .then(function (response) {
+             response.json()
+             .then(function (pokemon) {
+                 crearPokemon(pokemon, num)
+             })
+        })
+       }   
+
+       function luchadores(){
+          let primerId = Math.round(Math.random()*150) /* crea enteros aleatorios hasta 150 */ 
+          let segundoId = Math.round(Math.random()*150)
+
+          luchadorPokemon(primerId, 1)
+          luchadorPokemon(segundoId, 2)
+       }
+       function crearPokemon(pokemon, num) {
+        //    Los datos se convierten en HTML
+        let item = lista.querySelector(`#pokemon-${num}`)
+        // se selecciona sobre la lista
+        let imagen = item.getElementsByTagName("img")[0]
+        imagen.setAttribute("src", pokemon.sprites.front_default)
+        let nombre = item.getElementsByTagName("p")[0]
+        nombre.textContent = pokemon.name
+       }
+       luchadores()
+    </script>
+</body>
+</html>  
