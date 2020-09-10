@@ -19,16 +19,33 @@ body{
     
 }
 
+.Semifinal-2{
+    display: grid;
+    grid-template-columns: 1fr 100px 1fr;
+    max-width: 800px;
+    margin: auto;
+
+    
+}
 .luchadorP {
     border: 1px solid #333;
     padding: 10px;
-    background:rgb(241, 241, 241);
+    /* background: color; se cambia a dinamico */
     text-align: center;
 
     border-radius: 1em;
 
 }
 
+#pokemon-3{
+    background-color:"color";
+    margin-top: 20px;
+}
+
+#pokemon-4{
+    
+    margin-top: 20px;
+}
 .vs{
     text-align: center;
     margin: auto;
